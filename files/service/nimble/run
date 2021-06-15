@@ -25,14 +25,9 @@ data is stored outside of the container.
 EOF
 
     ## Sleep forever. Let the end user notice the error message
-    ## echoed to the logs.
-    ##
+    ## Would we not want to do some sort of error and exit the pod?
     exec /sbin/setuser nimble sleep infinity 
 fi
-
-# Make nimble user the owner of files in log directory
-mkdir -p /var/log/nimble
-chown -R nimble:root /var/log/nimble
 
 # Make nimble user the owner of rules.conf
 if [ -f /etc/nimble/rules.conf ]; then
@@ -48,7 +43,7 @@ chmod 775 /var/run/nimble
 # Set the maximum number of open file descriptors
 ulimit -n 50000
 
-ARGS="--conf-dir=/etc/nimble --log-dir=/var/log/nimble --pidfile=/var/run/nimble/nimble.pid"
+ARGS="--conf-dir=/etc/nimble --pidfile=/var/run/nimble/nimble.pid"
 
 # Run the service as the nimble user
 exec /sbin/setuser nimble /usr/bin/nimble $ARGS
