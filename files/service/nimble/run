@@ -43,7 +43,8 @@ chmod 775 /var/run/nimble
 # Set the maximum number of open file descriptors
 ulimit -n 50000
 
-ARGS="--conf-dir=/etc/nimble --pidfile=/var/run/nimble/nimble.pid"
+ARGS="--conf-dir=/etc/nimble --log-dir=/var/log/nimble --pidfile=/var/run/nimble/nimble.pid"
 
 # Run the service as the nimble user
 exec /sbin/setuser nimble /usr/bin/nimble $ARGS
+Echo "Nimble should be started"
