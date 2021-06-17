@@ -28,4 +28,4 @@ ENV WMSPANEL_SLICES	""
 ADD files/my_init.d	/etc/my_init.d
 ADD files/service	/etc/service
 
-EXPOSE 1935 8081
+EXPOSE 1935 8081 8086
