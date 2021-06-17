@@ -47,4 +47,3 @@ ARGS="--conf-dir=/etc/nimble --log-dir=/var/log/nimble --pidfile=/var/run/nimble
 
 # Run the service as the nimble user
 exec /sbin/setuser nimble /usr/bin/nimble $ARGS
-Echo "Nimble should be started"
