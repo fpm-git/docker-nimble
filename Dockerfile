@@ -27,7 +27,7 @@ ENV WMSPANEL_SLICES	""
 
 ## Service configuration
 ##
-ADD files/my_init.d	/etc/my_init.d
-ADD files/service	/etc/service
 
 EXPOSE 1935 8081
+
+ENTRYPOINT	["/usr/bin/nimble", "--conf-dir=/etc/nimble", "--log-dir=/var/log/nimble","--pidfile=/var/run/nimble/nimble.pid"]
