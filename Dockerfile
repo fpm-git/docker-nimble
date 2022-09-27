@@ -1,8 +1,8 @@
-FROM phusion/baseimage:focal-1.0.0
+FROM phusion/baseimage:jammy-1.0.1
 
 ## Install nimble and move all config files to /etc/nimble.conf
 ##
-RUN    echo "deb http://nimblestreamer.com/ubuntu focal/">> /etc/apt/sources.list \
+RUN    echo "deb http://nimblestreamer.com/ubuntu jammy/" > /etc/apt/sources.list.d/nimble.list \
     && curl -L -s http://nimblestreamer.com/gpg.key | apt-key add - \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y nimble \
