@@ -1,4 +1,4 @@
-FROM phusion/baseimage:jammy-1.0.1
+FROM phusion/baseimage:jammy-1.0.4
 
 ## Install nimble and move all config files to /etc/nimble.conf
 ##
