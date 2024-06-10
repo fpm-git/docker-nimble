@@ -2,12 +2,14 @@ FROM phusion/baseimage:jammy-1.0.4
 
 ## Install nimble and move all config files to /etc/nimble.conf
 ##
-RUN    echo "deb http://nimblestreamer.com/ubuntu jammy/" > /etc/apt/sources.list.d/nimble.list \
-    && curl -L -s http://nimblestreamer.com/gpg.key | apt-key add - \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y nimble \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y nimble-srt \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN    apt-get update
+RUN    apt-get install wget
+RUN    echo "deb http://nimblestreamer.com/ubuntu jammy/" > /etc/apt/sources.list.d/nimble.list
+RUN    wget -q -O - http://nimblestreamer.com/gpg.key | tee /etc/apt/trusted.gpg.d/nimble.asc
+RUN    apt-get update
+RUN    DEBIAN_FRONTEND=noninteractive apt-get install -y nimble
+RUN    DEBIAN_FRONTEND=noninteractive apt-get install -y nimble-srt
+RUN    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ## Configuration volume
 ##
